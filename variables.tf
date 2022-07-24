@@ -2,6 +2,18 @@ variable "projectPrefix" {
   type  = string
   default = "projectPrefix"
 }   
+variable "namespace" {
+  type        = string
+  default     = ""
+}
+variable "fqdn" {
+  type        = string
+  default     = ""
+}
+variable "serviceName" {
+  type        = string
+  default     = ""
+}
 
 variable "api_url" {
   description = "url of volterra api"
