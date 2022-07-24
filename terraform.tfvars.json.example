@@ -1,0 +1,9 @@
+{
+  "projectPrefix": "myproject",
+  "namespace": "mynamespace",
+  "serviceName": "myservice.namespace",
+  "fqdn": "myservice.delegated-domain.tld",
+
+  "api_p12_file" : "./tenant.console.ves.volterra.io.api-creds.p12",
+  "api_url"      : "https://tenant.console.ves.volterra.io/api"
+}
