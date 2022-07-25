@@ -1,19 +1,26 @@
 # List the start up tasks. Learn more https://www.gitpod.io/docs/config-start-tasks/
 tasks:
+  - name: tailscaled
+    command: |
+      if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+        # restore the tailscale state from gitpod user's env vars
+        sudo mkdir -p /var/lib/tailscale
+        echo "${TAILSCALE_STATE_MYPROJECT}" | sudo tee /var/lib/tailscale/tailscaled.state > /dev/null
+      fi
+      sudo tailscaled
+  - name: tailscale
+    command: |
+      if [ -n "${TAILSCALE_STATE_MYPROJECT}" ]; then
+        sudo -E tailscale up
+      else
+        sudo -E tailscale up --hostname "gitpod-${GITPOD_GIT_USER_NAME// /-}-$(echo ${GITPOD_WORKSPACE_CONTEXT} | jq -r .repository.name)"
+        # store the tailscale state into gitpod user
+        gp env TAILSCALE_STATE_MYPROJECT="$(sudo cat /var/lib/tailscale/tailscaled.state)"
+      fi
   - init: |
       echo "tasks - init"
     before: |
       echo "tasks - init - before"
-      curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
-      sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
-      sudo apt-get update -y -q && sudo apt-get install -y terraform jq
-      wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz
-      tar zxf openshift-install-linux.tar.gz openshift-install
-      sudo mv openshift-install /usr/local/bin/ && rm openshift-install-linux.tar.gz
-      wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
-      tar zxf openshift-install-linux.tar.gz oc kubectl
-      sudo mv oc kubectl /usr/local/bin/ && rm openshift-client-linux.tar.gz
-      curl -L https://github.com/derailed/k9s/releases/download/v0.26.0/k9s_Linux_x86_64.tar.gz | sudo tar -C /usr/local/bin -xvz k9s
       
     command: |
       echo "tasks - init - command"

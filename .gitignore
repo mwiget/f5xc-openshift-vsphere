@@ -2,4 +2,6 @@
 terraform.tfvars.json
 *.p12
 *.crt
+?*.swp
 .terraform*
+cluster-*

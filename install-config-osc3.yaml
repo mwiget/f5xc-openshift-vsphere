@@ -1,0 +1,47 @@
+apiVersion: v1
+baseDomain: mwlabs.net
+compute:
+- architecture: amd64
+  hyperthreading: Enabled
+  name: worker
+  replicas: 3
+  platform:
+    vsphere:
+      cpus: 4
+      memoryMB: 16384
+controlPlane:
+  architecture: amd64
+  hyperthreading: Enabled
+  name: master
+  platform:
+    vsphere:
+      cpus: 4
+      memoryMB: 16384
+  replicas: 3
+metadata:
+  creationTimestamp: null
+  name: osc3
+networking:
+  clusterNetwork:
+  - cidr: 10.128.0.0/14
+    hostPrefix: 23
+  machineNetwork:
+  - cidr: 10.0.0.0/16
+  networkType: OpenShiftSDN
+  serviceNetwork:
+  - 172.30.0.0/16
+platform:
+  vsphere:
+    apiVIP: 192.168.40.41
+    cluster: openshift
+    datacenter: Datacenter
+    defaultDatastore: datastore3
+    ingressVIP: 192.168.40.40
+    network: VM Network
+    password: HB9rwm4FXn.
+    username: administrator@vsphere.local
+    vCenter: 192.168.40.21
+publish: External
+pullSecret: '{"auths":{"cloud.openshift.com":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21hcmNlbHdpZ2V0MWw1ZHNkamxzb2hvZGtzeHV3Y3BucmhjY2dvOkM0SUpNSVA0UE82NUZBQVhPNkFLTElQWlpVVFg2N0JUT1RSUDU5VzBJNlZGTkI4ME5GTDNROFZDVzk0RktXNkE=","email":"mwiget@gmail.com"},"quay.io":{"auth":"b3BlbnNoaWZ0LXJlbGVhc2UtZGV2K21hcmNlbHdpZ2V0MWw1ZHNkamxzb2hvZGtzeHV3Y3BucmhjY2dvOkM0SUpNSVA0UE82NUZBQVhPNkFLTElQWlpVVFg2N0JUT1RSUDU5VzBJNlZGTkI4ME5GTDNROFZDVzk0RktXNkE=","email":"mwiget@gmail.com"},"registry.connect.redhat.com":{"auth":"NTIxMTMzMjh8dWhjLTFMNURTREpsU29IT2RLc1hVV0NQbnJoQ2NnTzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTNOamhrWldKak5UVTFOVEkwTURFNU9UZ3hORFExTldVeU9HWXdORGt3WlNKOS5HVG4wOEN3cGlMTVRTSklkX3hqSEZCdW1sOWxKT3hWNUVMWnM3TDlwQ1JILVpmaDNtamlRVkd1RVczUE5zQy1xeGJoMjE3TjlDV0pWRUNLY0lFanhiYjUzc3ZYZjZNNVVSYTVRNlFWOUxEckRKdnVid3hfVWFRaG5DcU9zTEZ1NXlyMXVtd29vZ0lnNzZTRHBua28xYjhBaXJSVG1GQnNqaVp4VEF0eDBXd3I4OWlUR2JaRmJhRjBQWFBfMzlfSVl4WldBRE9Hbm5zVjljQzNRMFpsMUh0aUFvSkFZNGNHZWM3NkgyR3J1eHBYN0ttMXY1VmcxVDZ0ZE8xQURjVzBpWTdNVWtEb0VaOE5ZclAxUmItN1ZHVlR3WThYNzRnZ3pKdXNLNWVaMHVHVGlQVGxEWVJydVNhMTNBZ3Q5M2xxejFIM3hmTjQ0TGdaSXJSU2ctV01fU1FOMURJdnRfWTNpLVpzQU01RDlOT3JYdVhzRUJ5anJFWXBSWXQ2ODBxbTJaZ3VENWRVeWNMX0VSWUMyam4xdHk5aFNWZzFIRktSWnJaTW9BeTNKZHozZEpMeENWNHNtS1dZQTg2ZHJXdk9HR1RvQ0RRMjdpNDdWVTdvY29hcm43WkNIRndDOFZoa0t1Z1NsWHhqUzZ2dHdpXzZJQlBqa3ZwV1hxQnVUU1F1bzREdGs5TzJZUWZyUFB0aWtxVllyRUJEUjZleHZGZnNBQzN4Q0ZVb0xUVGh1NlBWVUx3U18zTm95WEpFWnZ0d3dLYU12V1lBWTNLOFhQaEUyM3ZnT3l4eEdrazROT2RZZlZtZFNvZ1U3alJQMFQ5aVZCUFlRamtKamFMd3plUWdsaHMzWHdhV0dUcXVCUk5KZlNWdmVKZzRfYmVmaHhJc19lNVlEVzNYbW1vWQ==","email":"mwiget@gmail.com"},"registry.redhat.io":{"auth":"NTIxMTMzMjh8dWhjLTFMNURTREpsU29IT2RLc1hVV0NQbnJoQ2NnTzpleUpoYkdjaU9pSlNVelV4TWlKOS5leUp6ZFdJaU9pSTNOamhrWldKak5UVTFOVEkwTURFNU9UZ3hORFExTldVeU9HWXdORGt3WlNKOS5HVG4wOEN3cGlMTVRTSklkX3hqSEZCdW1sOWxKT3hWNUVMWnM3TDlwQ1JILVpmaDNtamlRVkd1RVczUE5zQy1xeGJoMjE3TjlDV0pWRUNLY0lFanhiYjUzc3ZYZjZNNVVSYTVRNlFWOUxEckRKdnVid3hfVWFRaG5DcU9zTEZ1NXlyMXVtd29vZ0lnNzZTRHBua28xYjhBaXJSVG1GQnNqaVp4VEF0eDBXd3I4OWlUR2JaRmJhRjBQWFBfMzlfSVl4WldBRE9Hbm5zVjljQzNRMFpsMUh0aUFvSkFZNGNHZWM3NkgyR3J1eHBYN0ttMXY1VmcxVDZ0ZE8xQURjVzBpWTdNVWtEb0VaOE5ZclAxUmItN1ZHVlR3WThYNzRnZ3pKdXNLNWVaMHVHVGlQVGxEWVJydVNhMTNBZ3Q5M2xxejFIM3hmTjQ0TGdaSXJSU2ctV01fU1FOMURJdnRfWTNpLVpzQU01RDlOT3JYdVhzRUJ5anJFWXBSWXQ2ODBxbTJaZ3VENWRVeWNMX0VSWUMyam4xdHk5aFNWZzFIRktSWnJaTW9BeTNKZHozZEpMeENWNHNtS1dZQTg2ZHJXdk9HR1RvQ0RRMjdpNDdWVTdvY29hcm43WkNIRndDOFZoa0t1Z1NsWHhqUzZ2dHdpXzZJQlBqa3ZwV1hxQnVUU1F1bzREdGs5TzJZUWZyUFB0aWtxVllyRUJEUjZleHZGZnNBQzN4Q0ZVb0xUVGh1NlBWVUx3U18zTm95WEpFWnZ0d3dLYU12V1lBWTNLOFhQaEUyM3ZnT3l4eEdrazROT2RZZlZtZFNvZ1U3alJQMFQ5aVZCUFlRamtKamFMd3plUWdsaHMzWHdhV0dUcXVCUk5KZlNWdmVKZzRfYmVmaHhJc19lNVlEVzNYbW1vWQ==","email":"mwiget@gmail.com"}}}'
+sshKey: |
+  ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDr1zH+NmWzf/+qtCTqC/+QAHoWIoq3k3YjH/IsjYdHXZ0mQonsMlrL+owArvLtvi3gXxqPGlO/aWt53v8KAY+RV7IOSbqfFY56k0GTmvPJisSsBkAedruu05hqlFMS/2mkNFL/BsWNzL617LtuFQpN6ud57QSrQruQQtIKTuWUe+XjqkSNiAkvD4zc4tip9ovULhC9QY/IVmhguVDJ0FuQWCDd4l7IM+KjlTXGplN5Y9bIVuU+nnSHnUEkRFxuGX1pvOHB1L31INlD9CVJHDA6bBJyIQgv0WcqoA2/3/8eRqN/pXOe+clglJGRT6bb/+5Sfy6JZoA0OlsyW66VfGR3 mwiget@xeon
