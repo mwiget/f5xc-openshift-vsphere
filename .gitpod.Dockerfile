@@ -8,8 +8,8 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
      && apt-get install -y tailscale terraform jq iputils-ping tmux \
      && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz \
      && tar zxf openshift-install-linux.tar.gz openshift-install \
-     && mv openshift-install /usr/bin/ && rm openshift-install-linux.tar.gz \
+     && mv openshift-install /usr/local/bin/ && rm openshift-install-linux.tar.gz \
      && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz \
      && tar zxf openshift-client-linux.tar.gz oc kubectl \
-     && mv oc kubectl /usr/bin/ && rm openshift-client-linux.tar.gz \
-     && curl -L https://github.com/derailed/k9s/releases/download/v0.26.0/k9s_Linux_x86_64.tar.gz | tar -C /usr/bin -xvz k9s
+     && mv oc kubectl /usr/local/bin/ && rm openshift-client-linux.tar.gz \
+     && curl -L https://github.com/derailed/k9s/releases/download/v0.26.0/k9s_Linux_x86_64.tar.gz | tar -C /usr/local/bin -xvz k9s
