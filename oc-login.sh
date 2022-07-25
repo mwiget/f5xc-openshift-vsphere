@@ -13,7 +13,6 @@ for cluster in osc2 osc3; do
     echo "no server found in state file"
     exit 1
   fi
-  echo oc login --kubeconfig kc$cluster --username kubeadmin --password $kubeadmin_password $server ...
-  oc login --kubeconfig kc$cluster --username kubeadmin --password $kubeadmin_password --insecure-skip-tls-verify=true $server
-  ls -l kc$cluster
+  echo oc login --kubeconfig kc-$cluster --username kubeadmin --password $kubeadmin_password $server ...
+  oc login --kubeconfig kc-$cluster --username kubeadmin --password $kubeadmin_password --insecure-skip-tls-verify=true $server
 done
