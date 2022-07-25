@@ -5,7 +5,7 @@ RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key
      && curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - \
      && apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main" \
      && apt-get update \
-     && apt-get install -y tailscale terraform jq \
+     && apt-get install -y tailscale terraform jq iputils-ping tmux \
      && wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz \
      && tar zxf openshift-install-linux.tar.gz openshift-install \
      && mv openshift-install /usr/local/bin/ && rm openshift-install-linux.tar.gz \
