@@ -1,5 +1,5 @@
+FROM gitpod/workspace-full:latest
 USER root
-
 RUN curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.gpg | sudo apt-key add - \
      && curl -fsSL https://pkgs.tailscale.com/stable/ubuntu/focal.list | sudo tee /etc/apt/sources.list.d/tailscale.list \
      && curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add - \
