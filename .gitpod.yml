@@ -7,6 +7,13 @@ tasks:
       curl -fsSL https://apt.releases.hashicorp.com/gpg | sudo apt-key add -
       sudo apt-add-repository "deb [arch=amd64] https://apt.releases.hashicorp.com $(lsb_release -cs) main"
       sudo apt-get update -y -q && sudo apt-get install -y terraform jq
+      wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-install-linux.tar.gz
+      tar zxf openshift-install-linux.tar.gz openshift-install
+      sudo mv openshift-install /usr/local/bin/ && rm openshift-install-linux.tar.gz
+      wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
+      tar zxf openshift-install-linux.tar.gz oc kubectl
+      sudo mv oc kubectl /usr/local/bin/ && rm openshift-client-linux.tar.gz
+      
     command: |
       echo "tasks - init - command"
 
