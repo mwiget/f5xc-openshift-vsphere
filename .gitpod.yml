@@ -13,7 +13,7 @@ tasks:
       wget https://mirror.openshift.com/pub/openshift-v4/x86_64/clients/ocp/stable/openshift-client-linux.tar.gz
       tar zxf openshift-install-linux.tar.gz oc kubectl
       sudo mv oc kubectl /usr/local/bin/ && rm openshift-client-linux.tar.gz
-      curl -L https://github.com/derailed/k9s/releases/download/v0.25.8/k9s_Linux_x86_64.tar.gz | sudo tar -C /usr/local/bin -xvz k9s
+      curl -L https://github.com/derailed/k9s/releases/download/v0.26.0/k9s_Linux_x86_64.tar.gz | sudo tar -C /usr/local/bin -xvz k9s
       
     command: |
       echo "tasks - init - command"
